@@ -2,7 +2,9 @@ package br.com.fiap.entity;
 
 public class UsuarioTO {
 	private int id;
+	private String login;
 	private String nome;
+	private String email;
 	private String senha;
 	
 	public UsuarioTO() {
@@ -10,10 +12,12 @@ public class UsuarioTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UsuarioTO(int id, String nome, String senha) {
+	public UsuarioTO(int id, String login, String nome, String email, String senha) {
 		super();
 		this.id = id;
+		this.login = login;
 		this.nome = nome;
+		this.email = email;
 		this.senha = senha;
 	}
 
@@ -25,12 +29,28 @@ public class UsuarioTO {
 		this.id = id;
 	}
 
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
