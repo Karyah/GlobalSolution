@@ -79,7 +79,7 @@ public class BicicletaDAO {
 			return listaBicicletas;	
 	
 		}
-	public BicicletaTO buscarPorID(int id) throws SQLException{
+	public BicicletaTO buscarPorId(int id) throws SQLException{
 			
 			PreparedStatement SQL = null;
 			BicicletaTO bicicleta = new BicicletaTO();

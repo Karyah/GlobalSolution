@@ -1,7 +1,9 @@
 package br.com.fiap.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import br.com.fiap.enums.EnumTamanho;
 
+@XmlRootElement
 public class BicicletaTO {
 	private int id;
 	private String serial;
