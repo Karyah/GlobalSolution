@@ -32,7 +32,7 @@ public class UsuarioBO {
 	public UsuarioTO buscarPorId(int id) {
 		usuarioDAO = new UsuarioDAO();
 		try {
-			return usuarioDAO.buscarPorID(id);
+			return usuarioDAO.buscarPorId(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

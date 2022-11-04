@@ -122,8 +122,7 @@ public class BicicletaDAO {
 			SQL.setString(1, bicicleta.getSerial());
 			SQL.setString(2, bicicleta.retornarTamanho());
 			
-			
-			
+			SQL.executeUpdate();
 			SQL.close();
 			conexao.close();
 		}catch(SQLException e) {

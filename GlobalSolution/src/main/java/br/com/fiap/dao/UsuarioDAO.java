@@ -70,7 +70,32 @@ public class UsuarioDAO {
 	
 		}
 	
-	public UsuarioTO buscarPorID(int id) throws SQLException{
+	public UsuarioTO buscarPorLogin(String login) throws SQLException {
+		PreparedStatement SQL = null;
+		UsuarioTO usuario = new UsuarioTO();
+		
+		try {
+			SQL = conexao.prepareStatement("SELECT * from Usuario WHERE login = ?");
+			SQL.setString(1, login);
+			
+			ResultSet rs = SQL.executeQuery();
+			if(rs.next()) {
+				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+			}
+			
+			SQL.close();
+			conexao.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return usuario;
+	}
+	
+	public UsuarioTO buscarPorId(int id) throws SQLException{
 			
 			PreparedStatement SQL = null;
 			
@@ -106,6 +131,7 @@ public class UsuarioDAO {
 			SQL.setString(4, usuario.getEmail());
 			SQL.setString(2, usuario.getSenha());
 			
+			SQL.executeUpdate();
 			SQL.close();
 			conexao.close();
 		}catch(SQLException e) {
