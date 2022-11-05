@@ -64,8 +64,8 @@ public class PontoDAO {
 		return listaPontos;
 	}
 	
-
-	public List<PontoTO> buscarPorEndereco() throws SQLException {
+ 
+	public List<PontoTO> buscarPorEndereco(String endereco) throws SQLException {
 		PreparedStatement SQL = null;
 		ResultSet rs = null;
 		
@@ -73,17 +73,18 @@ public class PontoDAO {
 		
 		try {
 			SQL = conexao.prepareStatement("SELECT * FROM Ponto WHERE endereco LIKE = '?'");
+			SQL.setString(1, endereco);
 			rs =SQL.executeQuery();
 			
 			while(rs.next()) {
 				int idPonto = rs.getInt("idPonto");
-				String endereco =rs.getString("endereco");
+				String enderecoString =rs.getString("endereco");
 				int idUsuario = rs.getInt("idUsuario");
 				
 				UsuarioDAO usuario = new UsuarioDAO();
 				UsuarioTO objetoUsuario = usuario.buscarPorId(idUsuario);
 				
-				PontoTO ponto = new PontoTO(idPonto, endereco, objetoUsuario);
+				PontoTO ponto = new PontoTO(idPonto, enderecoString, objetoUsuario);
 				listaPontos.add(ponto);
 			}
 			SQL.close();
