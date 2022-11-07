@@ -40,6 +40,18 @@ public class UsuarioBO {
 		return null;
 	}
 	
+	public UsuarioTO buscarPorLogin(String login) {
+		usuarioDAO = new UsuarioDAO();
+		try {
+			return usuarioDAO.buscarPorLogin(login);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 	public void atualizar(UsuarioTO usuario) {
 		usuarioDAO = new UsuarioDAO();
 		try {

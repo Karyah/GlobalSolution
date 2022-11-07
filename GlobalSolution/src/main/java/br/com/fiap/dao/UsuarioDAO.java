@@ -81,6 +81,7 @@ public class UsuarioDAO {
 			ResultSet rs = SQL.executeQuery();
 			if(rs.next()) {
 				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setLogin(rs.getString("login"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
@@ -106,6 +107,7 @@ public class UsuarioDAO {
 				ResultSet rs = SQL.executeQuery();
 				
 				if(rs.next()) {
+					usuario.setId(rs.getInt("idUsuario"));
 					usuario.setLogin(rs.getString("login"));
 					usuario.setNome(rs.getString("nome"));
 					usuario.setEmail(rs.getString("email"));

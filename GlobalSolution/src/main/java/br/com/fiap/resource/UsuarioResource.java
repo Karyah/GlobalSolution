@@ -37,11 +37,18 @@ public class UsuarioResource {
 		return usuarioBO.listar();
 	}
 	
+//	@GET
+//	@Path("/{id}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public UsuarioTO buscar(@PathParam("id") int id) {
+//		return usuarioBO.buscarPorId(id);
+//	}
+	
 	@GET
-	@Path("/{id}")
+	@Path("/{login}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UsuarioTO buscar(int id) {
-		return usuarioBO.buscarPorId(id);
+	public UsuarioTO buscar(@PathParam("login") String login) {
+		return usuarioBO.buscarPorLogin(login);
 	}
 	
 	@PUT

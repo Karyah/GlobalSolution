@@ -17,3 +17,45 @@ insert into Usuario (login, nome, email, senha) values('Carlinha','Carla Barros 
 insert into Usuario (login, nome, email, senha) values('OCardoso','Pedro Cardoso Campos','cardoso@gmail.com','ped342cardoss');
 
 insert into Usuario (login, nome, email, senha) values('Fernandas2','Fernanda Freitas Fernandas','FFFernanda@yahoo.com.br','fefrefe123');
+
+insert into Ponto (endereco, idUsuario) values('Rua Machado de Assis 137',10);
+
+insert into Ponto (endereco, idUsuario) values('Avenida Paulista, 900',4);
+
+insert into Ponto (endereco, idUsuario) values('Castelo Branco, 1080',5);
+
+insert into Ponto (endereco, idUsuario) values('Rua dos Imigrantes, número 25',6);
+
+insert into Ponto (endereco, idUsuario) values('Rua São João, 87',7);
+
+insert into Ponto (endereco, idUsuario) values('Rua Quinze de Novembro, Centro. Em frente ao número 140.',8);
+
+insert into Ponto (endereco, idUsuario) values('Rua Tiradentes, n° 307',9);
+
+insert into Ponto (endereco, idUsuario) values('Rua General Roberto Alves de Carvalho Filho, 241. Perto do hospital.',3);
+
+insert into Ponto (endereco, idUsuario) values('Rua Tarsila do Amaral, 100',2);
+
+insert into Ponto (endereco, idUsuario) values('Rua José Paulino, n° 307.',1);
+
+insert into Bicicleta (serial, tamanho) values ('AC7008896','Kids');
+
+insert into Bicicleta (serial, tamanho) values ('BZO90123','Adulto');
+
+insert into Bicicleta (serial, tamanho) values ('ZDA983214','Adulto');
+
+insert into Bicicleta (serial, tamanho) values ('KHL0098392','Adulto');
+
+insert into Bicicleta (serial, tamanho) values ('POL8923470','Kids');
+
+insert into Bicicleta (serial, tamanho) values ('JJD2384510','Adulto');
+
+insert into Bicicleta (serial, tamanho) values ('AAV001213','Kids');
+
+insert into Bicicleta (serial, tamanho) values ('CD998012','Adulto');
+
+insert into Bicicleta (serial, tamanho) values ('BER7324657','Kids');
+
+insert into Bicicleta (serial, tamanho) values ('OOL988650','Adulto');
+
+

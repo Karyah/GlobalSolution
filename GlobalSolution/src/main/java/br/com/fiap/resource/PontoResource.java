@@ -38,9 +38,9 @@ public class PontoResource {
 	}
 	
 	@GET
-	@Path("/{id}")
+	@Path("/{endereco}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<PontoTO> buscarPorEndereco(String endereco) {
+	public List<PontoTO> buscarPorEndereco(@PathParam("endereco") String endereco) {
 		return pontoBO.buscarPorEndereco(endereco);
 	}
 	
