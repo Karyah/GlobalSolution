@@ -58,4 +58,4 @@ insert into Bicicleta (serial, tamanho) values ('BER7324657','Kids');
 
 insert into Bicicleta (serial, tamanho) values ('OOL988650','Adulto');
 
-
+insert into Aluguel(idUsuario, idBicileta, tempoDeUso) values('','',0);
