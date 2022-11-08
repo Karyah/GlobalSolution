@@ -102,3 +102,5 @@ insert into Aluguel(idUsuario, idBicicleta, tempoDeUso) values('10','8',75);
 
 insert into Aluguel(idUsuario, idBicicleta, tempoDeUso) values('3','9',80);
 
+select * from Aluguel;
+SELECT * FROM Ponto WHERE endereco LIKE '%1%';

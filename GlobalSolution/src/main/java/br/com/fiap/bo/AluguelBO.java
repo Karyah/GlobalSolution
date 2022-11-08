@@ -11,6 +11,7 @@ public class AluguelBO {
 	private AluguelDAO aluguelDAO;
 	
 	public void inserir(AluguelTO alguel) {
+		aluguelDAO = new AluguelDAO();
 		try {
 			aluguelDAO.inserir(alguel);
 		} catch (SQLException e) {
@@ -20,6 +21,7 @@ public class AluguelBO {
 	}
 	
 	public List<AluguelTO> listar(){
+		aluguelDAO = new AluguelDAO();
 		try {
 			return aluguelDAO.listar();
 		} catch (SQLException e) {
@@ -27,5 +29,26 @@ public class AluguelBO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public AluguelTO buscarPorId(int id) {
+		aluguelDAO = new AluguelDAO();
+		try {
+			return aluguelDAO.buscarPorId(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void deletar(int id) {
+		aluguelDAO = new AluguelDAO();
+		try {
+			aluguelDAO.deletar(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

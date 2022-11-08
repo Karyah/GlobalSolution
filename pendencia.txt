@@ -1,10 +1,10 @@
-JAVA:
+ JAVA:
 
-Verificar novamente se usuário está funcionando:
-Verificar se ponto está funcionando:
-Verificar se bicicleta está funcionando:
-Terminar de configurar Aluguel no java:
-Verificar se aluguel está funcionando:
+Verificar novamente se usuário está funcionando: GET ALL E GET BY LOGIN FUNCIONANDO.
+Verificar se ponto está funcionando: GET ALL FUNCIONANDO. GET BY ENDERENCO FUNCIONA EM BD MAS EM JAVA NAO.
+Verificar se bicicleta está funcionando: GET ALL E GET BY ID FUNCIONANDO.
+Terminar de configurar Aluguel no java: INSERT E GET ALL JA ADICIONADOS (n significa q funciona)
+Verificar se aluguel está funcionando: não
 Verificar se tudo está condizendo com a uml.
 pronto :)
 

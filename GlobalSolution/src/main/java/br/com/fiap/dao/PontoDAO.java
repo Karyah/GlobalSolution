@@ -74,7 +74,7 @@ public class PontoDAO {
 		try {
 			SQL = conexao.prepareStatement("SELECT * FROM Ponto WHERE endereco LIKE '%?%'");
 			SQL.setString(1, endereco);
-			rs =SQL.executeQuery();
+			rs = SQL.executeQuery();
 			
 			while(rs.next()) {
 				int idPonto = rs.getInt("idPonto");
