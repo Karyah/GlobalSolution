@@ -10,9 +10,6 @@ import java.util.List;
 import br.com.fiap.entity.BicicletaTO;
 import br.com.fiap.enums.EnumTamanho;
 
-
-
-
 public class BicicletaDAO {
 	private Connection conexao = null;
 	
@@ -24,12 +21,12 @@ public class BicicletaDAO {
 		PreparedStatement SQL = null;
 		
 		try {
-			SQL = conexao.prepareStatement("insert into Bicicleta (idBicicleta, serial, tamanho) VALUES(?,?,?)");
+			SQL = conexao.prepareStatement("insert into Bicicleta (idBicicleta, serial, tamanho, disponibilidade) VALUES(?,?,?)");
 			
 			SQL.setInt(1, bicicleta.getId());
 			SQL.setString(2, bicicleta.getSerial());
 			SQL.setString(3,bicicleta.retornarTamanho());
-			
+			SQL.setString(4, bicicleta.retornaDisponibilidade());
 			
 			SQL.executeUpdate();
 			conexao.close();
@@ -63,7 +60,19 @@ public class BicicletaDAO {
 						tamanho = EnumTamanho.Kids;
 					}
 					
-					BicicletaTO bicicleta = new BicicletaTO(id, serial, tamanho);
+					String disponibilidade = rs.getString("disponibilidade");
+					
+					boolean isDisponivel = true;
+					
+					if (disponibilidade.equals("Disponível")) {
+						isDisponivel = true;
+					}else if(disponibilidade.equals("Indisponível")) {
+						isDisponivel = false;
+					}
+					
+					
+					
+					BicicletaTO bicicleta = new BicicletaTO(id, serial, tamanho, isDisponivel);
 					listaBicicletas.add(bicicleta);
 				}
 				
@@ -74,7 +83,6 @@ public class BicicletaDAO {
 			
 			}catch(SQLException e) {
 				e.printStackTrace();
-				System.err.println("erro");
 			}
 			return listaBicicletas;	
 	
@@ -101,6 +109,17 @@ public class BicicletaDAO {
 						bicicleta.setTamanho(EnumTamanho.Kids);
 					}		
 					
+					String disponibilidade = rs.getString("disponibilidade");
+					
+					boolean isDisponivel = true;
+					
+					if (disponibilidade.equals("Disponível")) {
+						isDisponivel = true;
+					}else if(disponibilidade.equals("Indisponível")) {
+						isDisponivel = false;
+						
+					bicicleta.setDisponivel(isDisponivel);	
+					}
 				}
 				
 				SQL.close();
@@ -118,13 +137,15 @@ public class BicicletaDAO {
 		PreparedStatement SQL = null;
 		
 		try {
-			SQL = conexao.prepareStatement("UPDATE Bicicleta SET serial = ?, SET tamanho = ?");
+			SQL = conexao.prepareStatement("UPDATE Bicicleta SET serial = ?, SET tamanho = ?, SET disponibilidade = ?");
 			SQL.setString(1, bicicleta.getSerial());
 			SQL.setString(2, bicicleta.retornarTamanho());
+			SQL.setString(3, bicicleta.retornaDisponibilidade());
 			
 			SQL.executeUpdate();
 			SQL.close();
 			conexao.close();
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

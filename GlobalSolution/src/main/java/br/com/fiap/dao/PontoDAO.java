@@ -20,11 +20,11 @@ public class PontoDAO {
 	public void inserir(PontoTO ponto) throws SQLException{
 		PreparedStatement SQL = null;
 		try {
-			SQL = conexao.prepareStatement("insert into Ponto (idPonto, endereco) values(?,?)");
+			SQL = conexao.prepareStatement("insert into Ponto (idPonto, endereco, idUsuario) values(?,?)");
 			
 			SQL.setInt(1, ponto.getId());
 			SQL.setString(2, ponto.getEndereco());
-			
+			SQL.setInt(3, ponto.getUsuario().getId());
 			
 			SQL.executeUpdate();
 			conexao.close();

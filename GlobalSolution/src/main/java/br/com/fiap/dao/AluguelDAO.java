@@ -20,6 +20,10 @@ public class AluguelDAO {
 			SQL.setInt(1, aluguel.getUsuario().getId());
 			SQL.setInt(2, aluguel.getBicicleta().getId());
 			SQL.setInt(3, aluguel.getTempoDeUso());
+			
+			SQL.executeUpdate();
+			conexao.close();
+			SQL.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}	

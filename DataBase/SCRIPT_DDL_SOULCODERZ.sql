@@ -24,14 +24,17 @@ alter table Ponto add idUsuario numeric(6) references Usuario;
 create table Bicicleta(
 idBicicleta numeric(6) generated as identity(start with 1 increment by 1),
 serial varchar2(100) not null,
-tamanho varchar2(6) not null
+tamanho varchar2(6) not null,
+disponibilidade varchar2(13) not null
 );
 
 alter table Bicicleta add constraint Bicicleta_PK primary key (idBicicleta);
 
 create table Aluguel(
-tempoDeUso numeric(3) not null
+idAluguel numeric(6) generated as identity(start with 1 increment by 1),
+tempoDeUso numeric(4) not null
 );
 
+alter table Aluguel add constraint Aluguel_PK primary key (idAluguel);
 alter table Aluguel add idUsuario numeric(6) references Usuario;
 alter table Aluguel add idBicicleta numeric(6) references Bicicleta;

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PontoTO {
 	private int id;
 	private String endereco;
-	private UsuarioTO usuario;
+	private UsuarioTO dono;
 	
 
 	public PontoTO() {
@@ -15,11 +15,11 @@ public class PontoTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PontoTO(int id, String endereco, UsuarioTO usuario) {
+	public PontoTO(int id, String endereco, UsuarioTO dono) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
-		this.usuario = usuario;
+		this.dono = dono;
 	}
 
 	public int getId() {
@@ -39,11 +39,11 @@ public class PontoTO {
 	}
 
 	public UsuarioTO getUsuario() {
-		return usuario;
+		return dono;
 	}
 
 	public void setUsuario(UsuarioTO usuario) {
-		this.usuario = usuario;
+		this.dono = usuario;
 	}
 	
 	

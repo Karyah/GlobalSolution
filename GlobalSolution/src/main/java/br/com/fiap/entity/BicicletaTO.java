@@ -8,17 +8,19 @@ public class BicicletaTO {
 	private int id;
 	private String serial;
 	private EnumTamanho tamanho;	
+	private boolean disponivel;
 	
 	public BicicletaTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BicicletaTO(int id, String serial, EnumTamanho tamanho) {
+	public BicicletaTO(int id, String serial, EnumTamanho tamanho, boolean disponivel) {
 		super();
 		this.id = id;
 		this.serial = serial;
 		this.tamanho = tamanho;
+		this.disponivel =  disponivel;
 	}
 
 	public int getId() {
@@ -52,6 +54,24 @@ public class BicicletaTO {
 			return "Kids";
 		}
 	}
+
+	public boolean isDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(boolean emUso) {
+		this.disponivel = emUso;
+	}
+	
+	public String retornaDisponibilidade() {
+		if(this.disponivel==true) {
+			return "Disponível";
+		}
+		else {
+			return "Indisponível";
+		}
+	}
+	
 	
 }
 	
