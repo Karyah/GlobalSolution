@@ -41,7 +41,7 @@ public class BicicletaResource {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public BicicletaTO buscar(int id) {
+	public BicicletaTO buscar(@PathParam("id") int id) {
 		return bikeBO.buscarPorId(id);
 	}
 	

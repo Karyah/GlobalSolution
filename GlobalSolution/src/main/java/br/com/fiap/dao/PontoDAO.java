@@ -72,7 +72,7 @@ public class PontoDAO {
 		List<PontoTO> listaPontos = new ArrayList<>();
 		
 		try {
-			SQL = conexao.prepareStatement("SELECT * FROM Ponto WHERE endereco LIKE = '?'");
+			SQL = conexao.prepareStatement("SELECT * FROM Ponto WHERE endereco LIKE '%?%'");
 			SQL.setString(1, endereco);
 			rs =SQL.executeQuery();
 			

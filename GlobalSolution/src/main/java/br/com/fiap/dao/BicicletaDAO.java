@@ -51,7 +51,7 @@ public class BicicletaDAO {
 				while(rs.next()) {
 					int id = rs.getInt("idBicicleta");
 					String serial = rs.getString("serial");
-					String tamanhoString = rs.getString("senha_candidato");
+					String tamanhoString = rs.getString("tamanho");
 					
 					EnumTamanho tamanho = null;
 					if(tamanhoString.equals("Adulto")) {
@@ -84,6 +84,7 @@ public class BicicletaDAO {
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
+			
 			return listaBicicletas;	
 	
 		}
@@ -101,6 +102,8 @@ public class BicicletaDAO {
 					bicicleta.setId(rs.getInt("idBicicleta"));
 					bicicleta.setSerial(rs.getString("serial"));
 					
+					
+					
 					String tamanho = rs.getString("tamanho");
 					if(tamanho.equals("Adulto")) {
 						bicicleta.setTamanho(EnumTamanho.Adulto);
@@ -108,6 +111,8 @@ public class BicicletaDAO {
 					if(tamanho.equals("Kids")) {
 						bicicleta.setTamanho(EnumTamanho.Kids);
 					}		
+					
+					
 					
 					String disponibilidade = rs.getString("disponibilidade");
 					

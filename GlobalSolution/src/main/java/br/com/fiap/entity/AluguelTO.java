@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class AluguelTO {
+	private int id;
 	private UsuarioTO usuario;
 	private BicicletaTO bicicleta;
 	private int tempoDeUso;
@@ -13,11 +14,20 @@ public class AluguelTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AluguelTO(UsuarioTO usuario, BicicletaTO bicicleta, int tempoDeUso) {
+	public AluguelTO(int id, UsuarioTO usuario, BicicletaTO bicicleta, int tempoDeUso) {
 		super();
+		this.id = id;
 		this.usuario = usuario;
 		this.bicicleta = bicicleta;
 		this.tempoDeUso = tempoDeUso;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public UsuarioTO getUsuario() {

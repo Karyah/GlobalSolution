@@ -5,7 +5,7 @@ drop table Aluguel cascade constraints;
 
 create table Usuario(
 idUsuario numeric(6) generated as identity(start with 1 increment by 1),
-login varchar2(30) not null,
+login varchar2(30) not null unique,
 nome varchar2(60) not null,
 email varchar2(70) not null unique,
 senha varchar2(30) not null
@@ -23,7 +23,7 @@ alter table Ponto add idUsuario numeric(6) references Usuario;
 
 create table Bicicleta(
 idBicicleta numeric(6) generated as identity(start with 1 increment by 1),
-serial varchar2(100) not null,
+serial varchar2(50) not null,
 tamanho varchar2(6) not null,
 disponibilidade varchar2(13) not null
 );

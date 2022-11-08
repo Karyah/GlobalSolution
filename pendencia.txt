@@ -1,0 +1,15 @@
+JAVA:
+
+Verificar novamente se usuário está funcionando:
+Verificar se ponto está funcionando:
+Verificar se bicicleta está funcionando:
+Terminar de configurar Aluguel no java:
+Verificar se aluguel está funcionando:
+Verificar se tudo está condizendo com a uml.
+pronto :)
+
+BANCO DE DADOS:
+
+verificar se o modelo relacional está de acordo com o ddl:
+pegar opinião sobre o relacionamento no relacional:
+fazer o dql sla o que:
