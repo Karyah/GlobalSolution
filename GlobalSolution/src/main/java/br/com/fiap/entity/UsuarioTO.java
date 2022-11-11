@@ -63,6 +63,12 @@ public class UsuarioTO {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	@Override
+	public String toString() {
+		return "UsuarioTO login=" + login + ", nome=" + nome + ", email=" + email + ", senha=" + senha
+				+ "]";
+	}
 	
 	
 	
