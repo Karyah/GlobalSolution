@@ -16,7 +16,14 @@ public class AluguelDAO {
 	public AluguelDAO() {
 		this.conexao = new GerenciadorBD().obterConexao();
 	}
-	/****/
+	
+	 /**
+	 *Recebe o objeto AluguelTO com seus respectivos registros, e o cadastra no banco de dados.
+	 *@param aluguel Objeto AluguelTO que deve ser cadastrado.
+	 *@return void
+	 *@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	 *@throws NullPointerException caso um dado nulo seja inserido.
+	  **/
 	public void inserir(AluguelTO aluguel) throws SQLException{
 		PreparedStatement SQL = null;
 		try {
@@ -34,6 +41,13 @@ public class AluguelDAO {
 		}
 	}
 	
+	
+	/**
+	* Retorna todos os objetos do tipo AluguelTO que estão cadastrados no banco de dados.
+	*@return List de AlguelTO
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public List<AluguelTO> listar() throws SQLException{
 		List<AluguelTO> listaAluguel = new ArrayList<>();
 		PreparedStatement SQL = null;
@@ -70,6 +84,14 @@ public class AluguelDAO {
 		return listaAluguel;
 	}
 	
+	/**
+	*Recebe o id do objeto do tipo AluguelTO, cujo registro deve ser buscado e retornado. Busca no banco 
+	*de dados o registro do objeto que tem esse mesmo id e o retorna.
+	*@param id O id do objeto que se deseja obter.
+	*@return O objeto AluguelTO cujo id é igual ao recebido pelo parâmetro.
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public AluguelTO buscarPorId(int id) throws SQLException{
 		
 		PreparedStatement SQL = null;
@@ -106,6 +128,14 @@ public class AluguelDAO {
 		return aluguel;
 	}
 	
+	/**
+	*Recebe o id do objeto cujo registro deve ser excluído no banco de dados, e o exclui.
+	*@param id id do objeto que deve ser excluído.
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
+
 	public void deletar(int id) throws SQLException{
 		
 		PreparedStatement SQL = null;

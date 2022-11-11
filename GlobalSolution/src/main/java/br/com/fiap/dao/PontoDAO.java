@@ -17,6 +17,13 @@ public class PontoDAO {
 		this.conexao = new GerenciadorBD().obterConexao();
 	}
 	
+	/**
+	*Recebe o objeto PontoTO com seus respectivos registros, e o cadastra no banco de dados.
+		 *@param ponto Objeto PontoTO que deve ser cadastrado.
+		 *@return void
+		 *@throws SQLException caso não seja possível obter conexão com o banco de dados.
+		 *@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void inserir(PontoTO ponto) throws SQLException{
 		PreparedStatement SQL = null;
 		try {
@@ -35,6 +42,12 @@ public class PontoDAO {
 		}
 	}
 	
+	/**
+	* Retorna todos os objetos do tipo PontoTO que estão cadastrados no banco de dados.
+	*@return List de PontoTO
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public List<PontoTO> listar() throws SQLException{
 		List<PontoTO> listaPontos = new ArrayList<>();
 		PreparedStatement SQL = null;
@@ -64,7 +77,14 @@ public class PontoDAO {
 		return listaPontos;
 	}
 	
- 
+	/**
+	*Recebe o id do objeto do tipo PontoTO, cujo registro deve ser buscado e retornado. Busca no banco 
+	*de dados o registro do objeto que tem esse mesmo id e o retorna.
+	*@param id O id do objeto que se deseja obter.
+	*@return O objeto PontoTO cujo id é igual ao recebido pelo parâmetro.
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public List<PontoTO> buscarPorEndereco(String endereco) throws SQLException {
 		PreparedStatement SQL = null;
 		ResultSet rs = null;
@@ -97,6 +117,13 @@ public class PontoDAO {
 		return listaPontos;
 	}
 	
+	/**
+	* Recebe o objeto PontoTO, e atualiza esse objeto com seus novos atributos no banco de dados.
+	*@param ponto Objeto PontoTO que deve ser atualizado no banco de dados
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void atualizar(PontoTO ponto) throws SQLException {
 		PreparedStatement SQL = null;
 		
@@ -112,7 +139,13 @@ public class PontoDAO {
 		}
 	}
 	
-	
+	/**
+	*Recebe o id do objeto cujo registro deve ser excluído no banco de dados, e o exclui.
+	*@param id id do objeto que deve ser excluído.
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void deletar(int id) throws SQLException {
 		PreparedStatement SQL = null;
 		

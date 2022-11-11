@@ -17,7 +17,14 @@ public class UsuarioDAO {
 	public UsuarioDAO() {
 		this.conexao = new GerenciadorBD().obterConexao();
 	}
-	
+
+	/**
+	*Recebe o objeto UsuarioTO com seus respectivos registros, e o cadastra no banco de dados.
+		 *@param usuario Objeto UsuarioTO que deve ser cadastrado.
+		 *@return void
+		 *@throws SQLException caso não seja possível obter conexão com o banco de dados.
+		 *@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void inserir(UsuarioTO usuario) throws SQLException{
 		PreparedStatement SQL = null;
 		
@@ -39,6 +46,12 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/**
+	* Retorna todos os objetos do tipo UsuarioTO que estão cadastrados no banco de dados.
+	*@return List de UsuarioTO
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public List<UsuarioTO> listar() throws SQLException{
 			
 			List<UsuarioTO> listaUsuarios = new ArrayList<>();
@@ -70,6 +83,14 @@ public class UsuarioDAO {
 	
 		}
 	
+	/**
+	*Recebe uma String que condiz ao login do usuário. Este método procura no banco de dados registros que possuam 
+	*este login.
+	*@param login A string do login do usuário que deseja-se obter.
+	*@return O objeto UsuarioTO cujo login é igual ao recebido pelo parâmetro.
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public UsuarioTO buscarPorLogin(String login) throws SQLException {
 		PreparedStatement SQL = null;
 		UsuarioTO usuario = new UsuarioTO();
@@ -122,6 +143,13 @@ public class UsuarioDAO {
 			return usuario;
 		}
 	
+	/**
+	* Recebe o objeto UsuarioTO, e atualiza esse objeto com seus novos atributos no banco de dados.
+	*@param usuario Objeto UsuarioTO que deve ser atualizado no banco de dados
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void atualizar(UsuarioTO usuario) throws SQLException{
 
 		PreparedStatement SQL = null;
@@ -140,7 +168,13 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	*Recebe o id do objeto cujo registro deve ser excluído no banco de dados, e o exclui.
+	*@param id id do objeto que deve ser excluído.
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void deletar(int id) throws SQLException{
 			
 			PreparedStatement SQL = null;

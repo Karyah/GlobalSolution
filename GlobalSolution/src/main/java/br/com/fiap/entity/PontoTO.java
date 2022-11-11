@@ -3,7 +3,6 @@ package br.com.fiap.entity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-
 public class PontoTO {
 	private int id;
 	private String endereco;

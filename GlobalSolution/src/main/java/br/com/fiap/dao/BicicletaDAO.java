@@ -17,6 +17,13 @@ public class BicicletaDAO {
 		this.conexao = new GerenciadorBD().obterConexao();
 	}
 	
+	/**
+	*Recebe o objeto BicicletaTO com seus respectivos registros, e o cadastra no banco de dados.
+		 *@param bicicleta Objeto BicicletaTO que deve ser cadastrado.
+		 *@return void
+		 *@throws SQLException caso não seja possível obter conexão com o banco de dados.
+		 *@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void inserir(BicicletaTO bicicleta) throws SQLException{
 		PreparedStatement SQL = null;
 		
@@ -37,6 +44,13 @@ public class BicicletaDAO {
 		}
 	}
 	
+	/**
+	* Retorna todos os objetos do tipo BicicletaTO que estão cadastrados no banco de dados.
+	*@return List de BicicletaTO
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
+
 	public List<BicicletaTO> listar() throws SQLException{
 			
 			List<BicicletaTO> listaBicicletas = new ArrayList<>();
@@ -88,6 +102,15 @@ public class BicicletaDAO {
 			return listaBicicletas;	
 	
 		}
+	
+	/**
+	*Recebe o id do objeto do tipo BicicletaTO, cujo registro deve ser buscado e retornado. Busca no banco 
+	*de dados o registro do objeto que tem esse mesmo id e o retorna.
+	*@param id O id do objeto que se deseja obter.
+	*@return O objeto BicicletaTO cujo id é igual ao recebido pelo parâmetro.
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public BicicletaTO buscarPorId(int id) throws SQLException{
 			
 			PreparedStatement SQL = null;
@@ -137,6 +160,13 @@ public class BicicletaDAO {
 			return bicicleta;
 	}
 	
+	/** 
+	* Recebe o objeto BicicletaTO, e atualiza esse objeto com seus novos atributos no banco de dados.
+	*@param bicicleta Objeto BicicletaTO que deve ser atualizado no banco de dados
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void atualizar(BicicletaTO bicicleta) throws SQLException{
 
 		PreparedStatement SQL = null;
@@ -156,6 +186,13 @@ public class BicicletaDAO {
 		}
 	}
 	
+	/**
+	*Recebe o id do objeto cujo registro deve ser excluído no banco de dados, e o exclui.
+	*@param id id do objeto que deve ser excluído.
+	*@return void
+	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
+	*@throws NullPointerException caso um dado nulo seja inserido.
+	*/
 	public void deletar(int id) throws SQLException{
 			
 			PreparedStatement SQL = null;
