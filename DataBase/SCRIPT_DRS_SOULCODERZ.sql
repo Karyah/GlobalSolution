@@ -3,3 +3,5 @@ e mostra tais resultados.
 Tal busca deve ser ordenada pelo id do ponto (idPonto)*/
 select * from Ponto where endereco like '%Rua%' order by idPonto;
 
+select idBicicleta, max(tempoDeUso) as tempo from Aluguel group by idBicicleta having max(tempoDeUso) > 100;
+
