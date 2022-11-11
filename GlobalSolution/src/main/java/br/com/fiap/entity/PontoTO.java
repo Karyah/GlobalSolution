@@ -14,11 +14,11 @@ public class PontoTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PontoTO(int id, String endereco, UsuarioTO dono) {
+	public PontoTO(int id, String endereco, int idUsuario) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
-		this.dono = dono;
+		this.dono.setId(idUsuario);
 	}
 
 	public int getId() {

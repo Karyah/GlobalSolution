@@ -62,10 +62,9 @@ public class PontoDAO {
 				String endereco = rs.getString("endereco");
 				int idUsuario = rs.getInt("idUsuario");
 				
-				UsuarioDAO usuario = new UsuarioDAO();
-				UsuarioTO objetoUsuario = usuario.buscarPorId(idUsuario);
 				
-				PontoTO ponto = new PontoTO(id,endereco, objetoUsuario);
+				
+				PontoTO ponto = new PontoTO(id,endereco, idUsuario);
 				listaPontos.add(ponto);
 			}
 			conexao.close();
@@ -100,11 +99,11 @@ public class PontoDAO {
 				int idPonto = rs.getInt("idPonto");
 				String enderecoString =rs.getString("endereco");
 				int idUsuario = rs.getInt("idUsuario");
+//				
+//				UsuarioDAO usuario = new UsuarioDAO();
+//				UsuarioTO objetoUsuario = usuario.buscarPorId(idUsuario);
 				
-				UsuarioDAO usuario = new UsuarioDAO();
-				UsuarioTO objetoUsuario = usuario.buscarPorId(idUsuario);
-				
-				PontoTO ponto = new PontoTO(idPonto, enderecoString, objetoUsuario);
+				PontoTO ponto = new PontoTO(idPonto, enderecoString, idUsuario);
 				listaPontos.add(ponto);
 			}
 			SQL.close();
