@@ -4,12 +4,22 @@ Verificar novamente se usuário está funcionando: GET ALL E GET BY LOGIN FUNCIO
 Verificar se ponto está funcionando: GET ALL FUNCIONANDO. GET BY ENDERENCO FUNCIONA EM BD MAS EM JAVA NAO.
 Verificar se bicicleta está funcionando: GET ALL E GET BY ID FUNCIONANDO.
 Terminar de configurar Aluguel no java: INSERT E GET ALL JA ADICIONADOS (n significa q funciona)
-Verificar se aluguel está funcionando: não
+Verificar se aluguel está funcionando: sim
+
+09/11:
+Arrumar Get by Endereço. - FUNCIONANDO
+Ver com o grupo se o insert, update e delete funcionam. - já pedi.
+Criar annotations para os métodos dao e services.
+Colocar outras exceções.
+Verificar se tudo funciona.
 Verificar se tudo está condizendo com a uml.
-pronto :)
+(talvez criar a classe main seja importante) -NÃO É
+
+10/10:
+FAZER O VÍDEO DO BACKEND FUNCIONANDO.
 
 BANCO DE DADOS:
 
 verificar se o modelo relacional está de acordo com o ddl:
 pegar opinião sobre o relacionamento no relacional:
-fazer o dql sla o que:
+fazer o drl sla o que:

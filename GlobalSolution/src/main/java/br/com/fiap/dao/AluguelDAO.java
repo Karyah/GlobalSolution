@@ -10,15 +10,13 @@ import br.com.fiap.entity.AluguelTO;
 import br.com.fiap.entity.BicicletaTO;
 import br.com.fiap.entity.UsuarioTO;
 
-
-
 public class AluguelDAO {
 	private Connection conexao;
 	
 	public AluguelDAO() {
 		this.conexao = new GerenciadorBD().obterConexao();
 	}
-	
+	/****/
 	public void inserir(AluguelTO aluguel) throws SQLException{
 		PreparedStatement SQL = null;
 		try {
@@ -33,7 +31,7 @@ public class AluguelDAO {
 			SQL.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 	
 	public List<AluguelTO> listar() throws SQLException{

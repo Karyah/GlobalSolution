@@ -17,6 +17,8 @@ public class BicicletaBO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(NullPointerException npe) {
+			npe.printStackTrace();
 		}
 	}
 	
@@ -27,6 +29,8 @@ public class BicicletaBO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(NullPointerException npe) {
+			npe.printStackTrace();
 		}
 		return null;
 	}
@@ -38,6 +42,8 @@ public class BicicletaBO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(NullPointerException npe) {
+			npe.printStackTrace();
 		}
 		return null;
 	}
@@ -49,6 +55,8 @@ public class BicicletaBO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(NullPointerException npe) {
+			npe.printStackTrace();
 		}
 	}
 	
@@ -59,6 +67,8 @@ public class BicicletaBO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(NullPointerException npe) {
+			npe.printStackTrace();
 		}
 	}
 	
