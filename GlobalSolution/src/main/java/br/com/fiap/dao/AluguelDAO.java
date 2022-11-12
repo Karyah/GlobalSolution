@@ -17,6 +17,32 @@ public class AluguelDAO {
 		this.conexao = new GerenciadorBD().obterConexao();
 	}
 	
+	/**
+	 * Método que calcula o tamanho da lista no banco de dados e adiciona um para criar o id.
+	 * @return idConta numero do id gerado.
+	 * @throws SQLException caso não seja possível obter conexão com o banco de dados.
+	 */
+	public int gerarId() throws SQLException{
+		PreparedStatement SQLdois = null;
+		int idConta= 0;
+		try {
+			SQLdois = conexao.prepareStatement("select count(idAluguel) from Aluguel");
+			ResultSet results = SQLdois.executeQuery();
+			
+			if(results.next()) {
+				idConta = results.getInt("count(idAluguel)")  + 1;
+			
+			}
+			SQLdois.close();
+			results.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idConta;
+	}
+	
 	 /**
 	 *Recebe o objeto AluguelTO com seus respectivos registros, e o cadastra no banco de dados.
 	 *@param aluguel Objeto AluguelTO que deve ser cadastrado.
@@ -28,7 +54,7 @@ public class AluguelDAO {
 		PreparedStatement SQL = null;
 		try {
 			SQL = conexao.prepareStatement("insert into Aluguel (idAluguel, idUsuario, idBicileta, tempoDeUso) values(?,?,?,?)");
-			SQL.setInt(1, aluguel.getId());
+			SQL.setInt(1, gerarId());
 			SQL.setInt(2, aluguel.getUsuario().getId());
 			SQL.setInt(3, aluguel.getBicicleta().getId());
 			SQL.setInt(4, aluguel.getTempoDeUso());

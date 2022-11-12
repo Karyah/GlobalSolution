@@ -18,6 +18,31 @@ public class BicicletaDAO {
 	}
 	
 	/**
+	 * Método que calcula o tamanho da lista no banco de dados e adiciona um para criar o id.
+	 * @return idConta numero do id gerado.
+	 * @throws SQLException caso não seja possível obter conexão com o banco de dados.
+	 */
+	public int gerarId() throws SQLException{
+		PreparedStatement SQLdois = null;
+		int idConta= 0;
+		try {
+			SQLdois = conexao.prepareStatement("select count(idBicicleta) from Bicicleta");
+			ResultSet results = SQLdois.executeQuery();
+			
+			if(results.next()) {
+				idConta = results.getInt("count(idBicicleta)")  + 1;
+			
+			}
+			SQLdois.close();
+			results.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idConta;
+	}
+	/**
 	*Recebe o objeto BicicletaTO com seus respectivos registros, e o cadastra no banco de dados.
 		 *@param bicicleta Objeto BicicletaTO que deve ser cadastrado.
 		 *@return void
@@ -30,7 +55,7 @@ public class BicicletaDAO {
 		try {
 			SQL = conexao.prepareStatement("insert into Bicicleta (idBicicleta, serial, tamanho, disponibilidade) VALUES(?,?,?)");
 			
-			SQL.setInt(1, bicicleta.getId());
+			SQL.setInt(1, gerarId());
 			SQL.setString(2, bicicleta.getSerial());
 			SQL.setString(3,bicicleta.retornarTamanho());
 			SQL.setString(4, bicicleta.retornaDisponibilidade());

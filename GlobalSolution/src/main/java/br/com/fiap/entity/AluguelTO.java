@@ -14,11 +14,11 @@ public class AluguelTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AluguelTO(int id, UsuarioTO usuario, BicicletaTO bicicleta, int tempoDeUso) {
+	public AluguelTO(int id, UsuarioTO objetoUsuario, BicicletaTO objetoBike, int tempoDeUso) {
 		super();
 		this.id = id;
-		this.usuario = usuario;
-		this.bicicleta = bicicleta;
+		this.usuario=(objetoUsuario);
+		this.bicicleta=(objetoBike);
 		this.tempoDeUso = tempoDeUso;
 	}
 

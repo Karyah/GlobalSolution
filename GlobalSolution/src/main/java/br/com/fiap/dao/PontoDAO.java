@@ -18,6 +18,32 @@ public class PontoDAO {
 	}
 	
 	/**
+	 * Método que calcula o tamanho da lista no banco de dados e adiciona um para criar o id.
+	 * @return idConta numero do id gerado.
+	 * @throws SQLException caso não seja possível obter conexão com o banco de dados.
+	 */
+	public int gerarId() throws SQLException{
+		PreparedStatement SQLdois = null;
+		int idConta= 0;
+		try {
+			SQLdois = conexao.prepareStatement("select count(idPonto) from Ponto");
+			ResultSet results = SQLdois.executeQuery();
+			
+			if(results.next()) {
+				idConta = results.getInt("count(idPonto)")  + 1;
+			
+			}
+			SQLdois.close();
+			results.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idConta;
+	}
+	
+	/**
 	*Recebe o objeto PontoTO com seus respectivos registros, e o cadastra no banco de dados.
 		 *@param ponto Objeto PontoTO que deve ser cadastrado.
 		 *@return void
@@ -27,9 +53,9 @@ public class PontoDAO {
 	public void inserir(PontoTO ponto) throws SQLException{
 		PreparedStatement SQL = null;
 		try {
-			SQL = conexao.prepareStatement("insert into Ponto (idPonto, endereco, idUsuario) values(?,?)");
+			SQL = conexao.prepareStatement("insert into Ponto (idPonto, endereco, idUsuario) values(?,?,?)");
 			
-			SQL.setInt(1, ponto.getId());
+			SQL.setInt(1, gerarId());
 			SQL.setString(2, ponto.getEndereco());
 			SQL.setInt(3, ponto.getUsuario().getId());
 			
@@ -62,9 +88,10 @@ public class PontoDAO {
 				String endereco = rs.getString("endereco");
 				int idUsuario = rs.getInt("idUsuario");
 				
+				UsuarioDAO usuarioDao = new UsuarioDAO();
+				UsuarioTO objetoUsuario = usuarioDao.buscarPorId(idUsuario);
 				
-				
-				PontoTO ponto = new PontoTO(id,endereco, idUsuario);
+				PontoTO ponto = new PontoTO(id,endereco, objetoUsuario);
 				listaPontos.add(ponto);
 			}
 			conexao.close();
@@ -100,10 +127,10 @@ public class PontoDAO {
 				String enderecoString =rs.getString("endereco");
 				int idUsuario = rs.getInt("idUsuario");
 //				
-//				UsuarioDAO usuario = new UsuarioDAO();
-//				UsuarioTO objetoUsuario = usuario.buscarPorId(idUsuario);
+				UsuarioDAO usuario = new UsuarioDAO();
+				UsuarioTO objetoUsuario = usuario.buscarPorId(idUsuario);
 				
-				PontoTO ponto = new PontoTO(idPonto, enderecoString, idUsuario);
+				PontoTO ponto = new PontoTO(idPonto, enderecoString, objetoUsuario	);
 				listaPontos.add(ponto);
 			}
 			SQL.close();

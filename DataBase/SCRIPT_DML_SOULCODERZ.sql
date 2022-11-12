@@ -58,7 +58,7 @@ insert into Bicicleta (serial, tamanho, disponibilidade) values ('BER7324657','K
 
 insert into Bicicleta (serial, tamanho, disponibilidade) values ('OOL988650','Adulto', 'Indisponível');
 
-insert into Aluguel(idUsuario, idBicileta, tempoDeUso) values('1','6',50);
+insert into Aluguel(idUsuario, idBicicleta, tempoDeUso) values('1','6',50);
 
 insert into Aluguel(idUsuario, idBicicleta, tempoDeUso) values('8','3',90);
 

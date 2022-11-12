@@ -8,16 +8,46 @@ import java.util.ArrayList;
 import java.util.List;
 import br.com.fiap.entity.UsuarioTO;
 
-
-
 public class UsuarioDAO {
 	
 	private Connection conexao = null;
 	
 	public UsuarioDAO() {
 		this.conexao = new GerenciadorBD().obterConexao();
+		try {
+			gerarId();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	/**
+	 * Método que calcula o tamanho da lista no banco de dados e adiciona um para criar o id.
+	 * @return idConta numero do id gerado.
+	 * @throws SQLException caso não seja possível obter conexão com o banco de dados.
+	 */
+	public int gerarId() throws SQLException{
+		PreparedStatement SQLdois = null;
+		int idConta= 0;
+		try {
+			SQLdois = conexao.prepareStatement("select count(idUsuario) from Usuario");
+			ResultSet results = SQLdois.executeQuery();
+			
+			if(results.next()) {
+				idConta = results.getInt("count(idUsuario)")  + 1;
+				
+			}
+			SQLdois.close();
+			results.close();
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idConta;
+	}
+	
+	
 	/**
 	*Recebe o objeto UsuarioTO com seus respectivos registros, e o cadastra no banco de dados.
 		 *@param usuario Objeto UsuarioTO que deve ser cadastrado.
@@ -25,13 +55,13 @@ public class UsuarioDAO {
 		 *@throws SQLException caso não seja possível obter conexão com o banco de dados.
 		 *@throws NullPointerException caso um dado nulo seja inserido.
 	*/
-	public void inserir(UsuarioTO usuario) throws SQLException{
+	public void inserir(UsuarioTO usuario) throws SQLException, NullPointerException{
 		PreparedStatement SQL = null;
 		
 		try {
 			SQL = conexao.prepareStatement("insert into Usuario (idUsuario, login, nome, email, senha) VALUES(?,?,?,?,?)");
 			
-			SQL.setInt(1, usuario.getId());
+			SQL.setInt(1, gerarId());
 			SQL.setString(2, usuario.getLogin());
 			SQL.setString(3, usuario.getNome());
 			SQL.setString(4, usuario.getEmail());
@@ -52,7 +82,7 @@ public class UsuarioDAO {
 	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
 	*@throws NullPointerException caso um dado nulo seja inserido.
 	*/
-	public List<UsuarioTO> listar() throws SQLException{
+	public List<UsuarioTO> listar() throws SQLException, NullPointerException{
 			
 			List<UsuarioTO> listaUsuarios = new ArrayList<>();
 			PreparedStatement SQL = null;
@@ -91,7 +121,7 @@ public class UsuarioDAO {
 	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
 	*@throws NullPointerException caso um dado nulo seja inserido.
 	*/
-	public UsuarioTO buscarPorLogin(String login) throws SQLException {
+	public UsuarioTO buscarPorLogin(String login) throws SQLException, NullPointerException {
 		PreparedStatement SQL = null;
 		UsuarioTO usuario = new UsuarioTO();
 		
@@ -117,7 +147,7 @@ public class UsuarioDAO {
 		return usuario;
 	}
 	
-	public UsuarioTO buscarPorId(int id) throws SQLException{
+	public UsuarioTO buscarPorId(int id) throws SQLException, NullPointerException{
 			
 			PreparedStatement SQL = null;
 			
@@ -150,16 +180,16 @@ public class UsuarioDAO {
 	*@throws SQLException caso não seja possível obter conexão com o banco de dados.
 	*@throws NullPointerException caso um dado nulo seja inserido.
 	*/
-	public void atualizar(UsuarioTO usuario) throws SQLException{
+	public void atualizar(UsuarioTO usuario) throws SQLException, NullPointerException{
 
 		PreparedStatement SQL = null;
 		
 		try {
-			SQL = conexao.prepareStatement("UPDATE Usuario SET login = ?, SET nome =?, SET email = ?, SET senha = ?");
+			SQL = conexao.prepareStatement("UPDATE Usuario SET login = ?, nome =?, email = ?,  senha = ?");
 			SQL.setString(1, usuario.getLogin());
-			SQL.setString(1, usuario.getNome());
-			SQL.setString(4, usuario.getEmail());
-			SQL.setString(2, usuario.getSenha());
+			SQL.setString(2, usuario.getNome());
+			SQL.setString(3, usuario.getEmail());
+			SQL.setString(4, usuario.getSenha());
 			
 			SQL.executeUpdate();
 			SQL.close();
@@ -180,7 +210,7 @@ public class UsuarioDAO {
 			PreparedStatement SQL = null;
 			
 			try {
-				SQL = conexao.prepareStatement("DELETE FROM Usuario WHERE id =  ?");
+				SQL = conexao.prepareStatement("DELETE FROM Usuario WHERE idUsuario =  ?");
 				SQL.setInt(1, id);
 				
 				SQL.executeUpdate();
